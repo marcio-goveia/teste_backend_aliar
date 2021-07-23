@@ -12,9 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2021_07_21_012356) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "exams", force: :cascade do |t|
     t.string "name", null: false
     t.integer "kind", null: false
