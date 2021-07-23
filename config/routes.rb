@@ -19,7 +19,7 @@ Rails.application.routes.draw do
       end
     end
 
-    post 'laboratory_exams/associate' => 'laboratory_exams#associate'
-    post 'laboratory_exams/dissociate' => 'laboratory_exams#dissociate'
+    post 'exams_laboratories/associate' => 'exams_laboratories#associate'
+    post 'exams_laboratories/dissociate' => 'exams_laboratories#dissociate'
   end
 end

@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2021_07_21_012356) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "exams", force: :cascade do |t|
     t.string "name", null: false
     t.integer "kind", null: false
@@ -20,11 +23,13 @@ ActiveRecord::Schema.define(version: 2021_07_21_012356) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "exams_laboratories", id: false, force: :cascade do |t|
+  create_table "exams_laboratories", force: :cascade do |t|
     t.integer "laboratory_id", null: false
     t.integer "exam_id", null: false
-    t.index ["exam_id", nil], name: "index_exams_laboratories_on_exam_id_and_laborotory_id", unique: true
-    t.index [nil, "exam_id"], name: "index_exams_laboratories_on_laborotory_id_and_exam_id", unique: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["laboratory_id", "exam_id"], name: "index_exams_laboratories_on_laboratory_id_and_exam_id", unique: true
+    t.index ["laboratory_id"], name: "index_exams_laboratories_on_laboratory_id"
   end
 
   create_table "laboratories", force: :cascade do |t|

@@ -3,7 +3,9 @@ class Exam < ApplicationRecord
 
   validates_presence_of :name, :kind
   validates :kind, inclusion: { in: kinds.keys, message: "%{value} is not a valid kind" }
-  has_and_belongs_to_many :laboratories
+
+  has_many :exam_laboratories, dependent: :destroy
+  has_many :laboratories,  through: :exam_laboratories
 
   default_scope { where(status: true) }
 

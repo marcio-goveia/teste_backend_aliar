@@ -1,4 +1,4 @@
-class Api::LaboratoryExamsController < ApplicationController
+class Api::ExamsLaboratoriesController < ApplicationController
   before_action :set_lab_and_exam
 
   def associate

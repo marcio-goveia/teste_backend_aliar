@@ -1,6 +1,8 @@
 class Laboratory < ApplicationRecord
   validates_presence_of :name, :address
-  has_and_belongs_to_many :exams, uniq: true
+
+  has_many :exam_laboratories, dependent: :destroy
+  has_many :exams, through: :exam_laboratories
 
   default_scope { where(status: true) }
 
